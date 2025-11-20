@@ -13,7 +13,7 @@ import type {
   ContractRunner,
   ContractMethod,
   Listener,
-} from "ethers";
+} from 'ethers';
 import type {
   TypedContractEvent,
   TypedDeferredTopicFilter,
@@ -21,18 +21,18 @@ import type {
   TypedLogDescription,
   TypedListener,
   TypedContractMethod,
-} from "./common";
+} from './common';
 
 export interface CounterInterface extends Interface {
-  getFunction(nameOrSignature: "getCount" | "increment"): FunctionFragment;
+  getFunction(nameOrSignature: 'getCount' | 'increment'): FunctionFragment;
 
-  getEvent(nameOrSignatureOrTopic: "CounterIncremented"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'CounterIncremented'): EventFragment;
 
-  encodeFunctionData(functionFragment: "getCount", values?: undefined): string;
-  encodeFunctionData(functionFragment: "increment", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'getCount', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'increment', values?: undefined): string;
 
-  decodeFunctionResult(functionFragment: "getCount", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "increment", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'getCount', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'increment', data: BytesLike): Result;
 }
 
 export namespace CounterIncrementedEvent {
@@ -57,57 +57,57 @@ export interface Counter extends BaseContract {
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,
     fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
+    toBlock?: string | number | undefined,
   ): Promise<Array<TypedEventLog<TCEvent>>>;
   queryFilter<TCEvent extends TypedContractEvent>(
     filter: TypedDeferredTopicFilter<TCEvent>,
     fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
+    toBlock?: string | number | undefined,
   ): Promise<Array<TypedEventLog<TCEvent>>>;
 
   on<TCEvent extends TypedContractEvent>(
     event: TCEvent,
-    listener: TypedListener<TCEvent>
+    listener: TypedListener<TCEvent>,
   ): Promise<this>;
   on<TCEvent extends TypedContractEvent>(
     filter: TypedDeferredTopicFilter<TCEvent>,
-    listener: TypedListener<TCEvent>
+    listener: TypedListener<TCEvent>,
   ): Promise<this>;
 
   once<TCEvent extends TypedContractEvent>(
     event: TCEvent,
-    listener: TypedListener<TCEvent>
+    listener: TypedListener<TCEvent>,
   ): Promise<this>;
   once<TCEvent extends TypedContractEvent>(
     filter: TypedDeferredTopicFilter<TCEvent>,
-    listener: TypedListener<TCEvent>
+    listener: TypedListener<TCEvent>,
   ): Promise<this>;
 
   listeners<TCEvent extends TypedContractEvent>(
-    event: TCEvent
+    event: TCEvent,
   ): Promise<Array<TypedListener<TCEvent>>>;
   listeners(eventName?: string): Promise<Array<Listener>>;
   removeAllListeners<TCEvent extends TypedContractEvent>(
-    event?: TCEvent
+    event?: TCEvent,
   ): Promise<this>;
 
-  getCount: TypedContractMethod<[], [bigint], "view">;
+  getCount: TypedContractMethod<[], [bigint], 'view'>;
 
-  increment: TypedContractMethod<[], [void], "nonpayable">;
+  increment: TypedContractMethod<[], [void], 'nonpayable'>;
 
   getFunction<T extends ContractMethod = ContractMethod>(
-    key: string | FunctionFragment
+    key: string | FunctionFragment,
   ): T;
 
   getFunction(
-    nameOrSignature: "getCount"
-  ): TypedContractMethod<[], [bigint], "view">;
+    nameOrSignature: 'getCount',
+  ): TypedContractMethod<[], [bigint], 'view'>;
   getFunction(
-    nameOrSignature: "increment"
-  ): TypedContractMethod<[], [void], "nonpayable">;
+    nameOrSignature: 'increment',
+  ): TypedContractMethod<[], [void], 'nonpayable'>;
 
   getEvent(
-    key: "CounterIncremented"
+    key: 'CounterIncremented',
   ): TypedContractEvent<
     CounterIncrementedEvent.InputTuple,
     CounterIncrementedEvent.OutputTuple,
@@ -115,7 +115,7 @@ export interface Counter extends BaseContract {
   >;
 
   filters: {
-    "CounterIncremented(uint256,address)": TypedContractEvent<
+    'CounterIncremented(uint256,address)': TypedContractEvent<
       CounterIncrementedEvent.InputTuple,
       CounterIncrementedEvent.OutputTuple,
       CounterIncrementedEvent.OutputObject
