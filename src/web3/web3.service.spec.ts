@@ -3,9 +3,10 @@ import { Web3Service } from './web3.service';
 import { ConfigService } from '@nestjs/config';
 import { ethers } from 'ethers';
 
-jest.mock('./abi/Counter.json', () => ({
-  abi: [],
-}));
+//The ABI is not used directly anywhere so I think the mock can be removed?
+// jest.mock('./abi/Counter.json', () => ({
+//   abi: [],
+// }));
 
 describe('Web3Service', () => {
   let service: Web3Service;
@@ -56,6 +57,7 @@ describe('Web3Service', () => {
   beforeEach(async () => {
     jest.clearAllMocks();
 
+    /* Is this the proper way of mocking? */
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         Web3Service,
