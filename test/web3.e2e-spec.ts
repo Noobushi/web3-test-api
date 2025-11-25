@@ -31,6 +31,7 @@ describe('Web3Controller (E2E)', () => {
     await contract.waitForDeployment();
     contractAddress = await contract.getAddress();
 
+    /* Is this the proper way of mocking? */
     const moduleRef = await Test.createTestingModule({
       controllers: [Web3Controller],
       providers: [
@@ -59,6 +60,8 @@ describe('Web3Controller (E2E)', () => {
     await app.init();
   });
 
+  /* Is this the best way to stop the app after the test finish? 
+  Maybe there is ready to use anvil approach...*/
   afterAll(async () => {
     if (app) await app.close();
     if (anvilProcess) anvilProcess.kill();

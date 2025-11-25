@@ -12,6 +12,8 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 export class Web3Controller {
   constructor(private readonly web3Service: Web3Service) {}
 
+  /* If there are many error cases for specific endpoint, is there a better way than overflowing the screen with @ApiResponse annotation? 
+  Seems not worth it to me for Swagger purpose only */
   @ApiResponse({
     status: 200,
     description: 'Counter value retrieved successfully',
